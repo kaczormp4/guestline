@@ -1,0 +1,18 @@
+@import "./variables/style.scss";
+.App {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: $mainBgColor;
+}
+.MainContentContainer {
+  width: 80%;
+  min-height: 80vh;
+  display: flex;
+}
+.ContentContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2vw;
+  padding-top: 0vw;
+}

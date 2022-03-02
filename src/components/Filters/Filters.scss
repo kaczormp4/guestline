@@ -1,0 +1,79 @@
+.FilterContainer {
+  height: max-content;
+  box-shadow: 0 0 10px grey;
+  position: sticky;
+  top: 2vw;
+  margin-top: 2vw;
+  border-radius: 0.2vw;
+  padding: 1vw;
+  background-color: white;
+  & > .Title {
+    position: relative;
+    top: -2vw;
+    background-color: white;
+    box-shadow: 0px -10px 6px 0px grey;
+    padding: 1vw;
+    font-weight: bold;
+  }
+  & > p:first-child {
+    margin-top: 0;
+  }
+}
+.FilterStars {
+  width: 100%;
+  font-size: 2vw;
+  &img,
+  svg {
+    margin-right: 0.5vw;
+  }
+  &img,
+  svg:hover {
+    color: gold;
+    cursor: pointer;
+  }
+}
+.FilterAdults {
+  width: 100%;
+  font-size: 1.5vw;
+  display: flex;
+  align-items: center;
+  & > span {
+    font-weight: bold;
+  }
+  .buttonsBox {
+    display: flex;
+    align-items: center;
+    & > svg,
+    img {
+      margin: 1vw;
+      font-size: 2vw;
+      &:hover {
+        cursor: pointer;
+        color: gold;
+      }
+    }
+  }
+}
+
+.FilterChildren {
+  width: 100%;
+  font-size: 1.5vw;
+  display: flex;
+  align-items: center;
+  & > span {
+    font-weight: bold;
+  }
+  .buttonsBox {
+    display: flex;
+    align-items: center;
+    & > svg,
+    img {
+      margin: 1vw;
+      font-size: 2vw;
+      &:hover {
+        cursor: pointer;
+        color: gold;
+      }
+    }
+  }
+}
