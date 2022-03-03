@@ -3,6 +3,8 @@ import { BsFillStarFill, BsStar } from 'react-icons/bs';
 import './Offerbox.scss';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { OfferRoomBox } from '../OfferRoomBox/OfferRoomBox';
+import { useSelector } from 'react-redux';
+import { selectFilter } from '../../redux/reducers/filterReducer';
 
 interface OfferBoxProps {
     data: {
@@ -15,7 +17,8 @@ interface OfferBoxProps {
     }
 }
 export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
-    const [currentImg, setCurrentImg] = useState<number>(0)
+    const [currentImg, setCurrentImg] = useState<number>(0);
+    const { adults, children } = useSelector(selectFilter);
 
     let starRating = [...Array(parseInt(data.starRating))].map((e, i) => <BsFillStarFill key={i} />);
     if (starRating.length < 5) {
@@ -53,7 +56,12 @@ export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
                 setRoomsData(res)
             })
     }, [])
-    console.log('roomsData', roomsData)
+
+    const filteredData = roomsData?.rooms?.filter(
+        (room: { occupancy: { maxAdults: number, maxChildren: number } }) => room.occupancy.maxAdults >= adults && room.occupancy.maxChildren >= children
+    );
+
+    const RoomsBoxes = filteredData?.map((room: any) => <OfferRoomBox room={room} />)
 
     return (
         <>
@@ -80,9 +88,7 @@ export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
                     </div>
                 </div>
             </div>
-            {
-                roomsData?.rooms?.map((room: any) => <OfferRoomBox room={room} />)
-            }
+            {RoomsBoxes}
         </>
     )
 }

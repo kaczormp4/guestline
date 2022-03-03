@@ -1,17 +1,17 @@
 import { FC } from 'react'
 import './Filters.scss';
-import { BsFillStarFill, BsStar } from 'react-icons/bs';
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter } from '../../redux/reducers/filterReducer';
 import { decreaseCount, increaseCount, setStars } from '../../redux/actions/filterActions';
+import ReactStars from "react-rating-stars-component";
 
 export const Filters: FC = () => {
     const { stars, adults, children } = useSelector(selectFilter);
     const dispatch = useDispatch();
 
-    const setStarsCartHandleClick = () => {
-        dispatch(setStars(3));
+    const setStarsCartHandleClick = (newRating: number) => {
+        dispatch(setStars(newRating));
     };
 
     const increaseHandleClick = (type: string) => {
@@ -26,16 +26,12 @@ export const Filters: FC = () => {
             <span className="Title">Filters</span>
             <p>Stars:</p>
             <div className="FilterStars">
-                {/* <BsFillStarFill />
-                <BsFillStarFill />
-                <BsFillStarFill />
-                <BsFillStarFill />
-                <BsFillStarFill /> */}
-                <BsStar />
-                <BsStar />
-                <BsStar />
-                <BsStar />
-                <BsStar onClick={setStarsCartHandleClick} />
+                <ReactStars
+                    value={stars}
+                    count={5}
+                    onChange={setStarsCartHandleClick}
+                    size={42}
+                    activeColor="#ffd700" />
             </div>
             <p>Number of people:</p>
             <div className="FilterAdults">

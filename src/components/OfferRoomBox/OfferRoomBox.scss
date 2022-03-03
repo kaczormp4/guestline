@@ -33,18 +33,20 @@
   }
 }
 .ORBmainInfoBox {
-  width: calc(100% - 15vw);
+  width: calc(100% - 10vw);
   display: flex;
   justify-content: space-between;
   .ORBtitleAndAdress {
+    width: 70%;
     margin-left: 2vw;
     & > h2 {
       margin: 0;
       padding: 0;
     }
   }
-  .ORBstarBox {
-    font-size: 2vw;
+  .ORBOcupancyBox {
+    width: 30%;
+    padding-left: 2vw;
     &img,
     svg {
       margin-left: 0.5vw;

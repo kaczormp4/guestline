@@ -6,7 +6,8 @@ interface OfferRoomBoxProps {
         name: string,
         bedConfiguration: string,
         longDescription: string,
-        images: { url: string, alt?: string }[]
+        images: { url: string, alt?: string }[],
+        occupancy: { maxAdults: number, maxChildren: number }
     }
 }
 
@@ -24,8 +25,9 @@ export const OfferRoomBox: FC<OfferRoomBoxProps> = ({ room }) => {
                         <p> Bed configuration: <b>{room.bedConfiguration}</b></p>
                         <p>{room.longDescription}</p>
                     </div>
-                    <div className="ORBstarBox">
-                        {'starRating'}
+                    <div className="ORBOcupancyBox">
+                        <p>Max Adults: <b>{room.occupancy.maxAdults}</b></p>
+                        <p>Max Children: <b>{room.occupancy.maxChildren}</b></p>
                     </div>
                 </div>
             </div>
