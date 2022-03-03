@@ -16,3 +16,17 @@
   padding: 2vw;
   padding-top: 0vw;
 }
+
+@media only screen and (max-width: 1200px) {
+  .MainContentContainer {
+    width: 95%;
+    min-height: 80vh;
+    display: flex;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .MainContentContainer {
+    width: 95%;
+    display: block;
+  }
+}

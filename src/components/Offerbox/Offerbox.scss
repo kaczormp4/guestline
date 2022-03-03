@@ -96,3 +96,47 @@
     }
   }
 }
+.closedOfferRoomBoxContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  .closedOfferRoomBoxContent {
+    width: 98%;
+    box-shadow: 0 0 10px grey;
+    border-radius: 0.2vw;
+    margin-top: 0.5vw;
+    // padding: 1vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 1vw;
+    &:hover {
+      background-color: rgb(236, 236, 236);
+    }
+  }
+  .closedOfferFloatedInfo {
+    position: absolute;
+    right: 1vw;
+    top: -2vw;
+    padding: 0.2vw;
+    border-radius: 0.2vw;
+    box-shadow: 3px 5px 10px rgb(83, 216, 83);
+    animation: move 5s infinite;
+  }
+  @keyframes move {
+    0% {
+      box-shadow: 3px 5px 10px rgb(83, 216, 83);
+    }
+    25% {
+      box-shadow: -5px 4px 10px #53d853;
+    }
+    50% {
+      box-shadow: -5px -5px 10px #53d853;
+    }
+    100% {
+      box-shadow: 3px 5px 10px rgb(83, 216, 83);
+    }
+  }
+}

@@ -23,8 +23,10 @@
   width: 100%;
   font-size: 2vw;
   &img,
-  svg {
+  svg,
+  span {
     margin-right: 0.5vw;
+    font-size: 3vw !important;
   }
   &img,
   svg:hover {
@@ -95,5 +97,39 @@
   &:hover {
     color: lightgrey !important;
     cursor: not-allowed !important;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .FilterContainer {
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    & > .Title {
+      position: absolute;
+      top: -2vw;
+      box-shadow: none;
+      padding: 1vw;
+      height: max-content;
+    }
+  }
+  .mobileStars {
+    padding-left: 1vw;
+  }
+  .mobileNumberOfPeople {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: row;
+    align-content: flex-start;
+    & > p {
+      width: 100%;
+      height: max-content;
+    }
+    .FilterAdults,
+    .FilterChildren {
+      width: max-content;
+      height: max-content;
+    }
   }
 }

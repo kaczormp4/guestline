@@ -24,38 +24,41 @@ export const Filters: FC = () => {
     return (
         <div className="FilterContainer">
             <span className="Title">Filters</span>
-            <p>Stars:</p>
-            <div className="FilterStars">
-                <ReactStars
-                    value={stars}
-                    count={5}
-                    onChange={setStarsCartHandleClick}
-                    size={42}
-                    activeColor="#ffd700" />
-            </div>
-            <p>Number of people:</p>
-            <div className="FilterAdults">
-                <span>Adults:</span>
-                <div className="buttonsBox">
-                    {
-                        adults === 0 ?
-                            <AiOutlineMinusSquare className="disabled" />
-                            : <AiOutlineMinusSquare onClick={() => decreaseHandleClick('adults')} />
-                    }
-                    {adults}
-                    <AiOutlinePlusSquare onClick={() => increaseHandleClick('adults')} />
+            <div className="mobileStars">
+                <p>Stars:</p>
+                <div className="FilterStars">
+                    <ReactStars
+                        value={stars}
+                        count={5}
+                        onChange={setStarsCartHandleClick}
+                        activeColor="#ffd700" />
                 </div>
             </div>
-            <div className="FilterChildren">
-                <span>Children:</span>
-                <div className="buttonsBox">
-                    {
-                        children === 0 ?
-                            <AiOutlineMinusSquare className="disabled" />
-                            : <AiOutlineMinusSquare onClick={() => decreaseHandleClick('children')} />
-                    }
-                    {children}
-                    <AiOutlinePlusSquare onClick={() => increaseHandleClick('children')} />
+            <div className="mobileNumberOfPeople">
+                <p>Number of people:</p>
+                <div className="FilterAdults">
+                    <span>Adults:</span>
+                    <div className="buttonsBox">
+                        {
+                            adults === 0 ?
+                                <AiOutlineMinusSquare className="disabled" />
+                                : <AiOutlineMinusSquare onClick={() => decreaseHandleClick('adults')} />
+                        }
+                        {adults}
+                        <AiOutlinePlusSquare onClick={() => increaseHandleClick('adults')} />
+                    </div>
+                </div>
+                <div className="FilterChildren">
+                    <span>Children:</span>
+                    <div className="buttonsBox">
+                        {
+                            children === 0 ?
+                                <AiOutlineMinusSquare className="disabled" />
+                                : <AiOutlineMinusSquare onClick={() => decreaseHandleClick('children')} />
+                        }
+                        {children}
+                        <AiOutlinePlusSquare onClick={() => increaseHandleClick('children')} />
+                    </div>
                 </div>
             </div>
         </div>

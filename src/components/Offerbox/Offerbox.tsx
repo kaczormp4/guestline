@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { BsFillStarFill, BsStar } from 'react-icons/bs';
 import './Offerbox.scss';
-import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
+import { BiDownArrow, BiLeftArrow, BiRightArrow, BiUpArrow } from 'react-icons/bi';
 import { OfferRoomBox } from '../OfferRoomBox/OfferRoomBox';
 import { useSelector } from 'react-redux';
 import { selectFilter } from '../../redux/reducers/filterReducer';
@@ -13,7 +13,7 @@ interface OfferBoxProps {
         address1: string,
         address2?: string,
         starRating: string,
-        images: { url: string, alt?: string }[]
+        images: { url?: string, alt?: string }[]
     }
 }
 export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
@@ -57,18 +57,23 @@ export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
             })
     }, [])
 
+    const [isOpen, setOpen] = useState<boolean>(true);
+    const handleCloseOpenView = () => {
+        setOpen(!isOpen)
+    }
+
     const filteredData = roomsData?.rooms?.filter(
         (room: { occupancy: { maxAdults: number, maxChildren: number } }) => room.occupancy.maxAdults >= adults && room.occupancy.maxChildren >= children
     );
 
     const RoomsBoxes = filteredData?.map((room: any) => <OfferRoomBox room={room} />)
-
+    console.log('RoomsBoxes', RoomsBoxes)
     return (
         <>
             <div className="OfferboxContainer">
                 <div className="OfferboxMainInfo">
                     <div className="photoBox">
-                        <img src={data.images[currentImg].url} alt={data.images[currentImg].alt} />
+                        <img src={data?.images[currentImg].url} alt={data.images[currentImg].alt} />
                         {
                             data.images.length > 1 && <>
                                 <div className="leftArrow" onClick={() => HandleChangeImage('left')}><BiLeftArrow /></div>
@@ -88,7 +93,23 @@ export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
                     </div>
                 </div>
             </div>
-            {RoomsBoxes}
+            {
+                <div className="closedOfferRoomBoxContainer" onClick={() => handleCloseOpenView()} >
+                    {
+                        RoomsBoxes?.length !== 0 && !isOpen &&
+                        <div className="closedOfferFloatedInfo">
+                            {RoomsBoxes?.length} offers match your filter
+                        </div>
+                    }
+                    <div className="closedOfferRoomBoxContent">
+                        {
+                            RoomsBoxes?.length === 0 ? 'No matching rooms found for the filter' :
+                                (isOpen ? <BiUpArrow /> : <BiDownArrow />)
+                        }
+                    </div>
+                </div>
+            }
+            {isOpen && RoomsBoxes}
         </>
     )
 }
