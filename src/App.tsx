@@ -16,7 +16,6 @@ function App() {
       })
   }, [])
 
-  console.log(data);
   const OfferBoxes = data.map((datas: any, i: number) => <Offerbox key={i} data={datas} />)
 
   return (

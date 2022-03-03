@@ -1,0 +1,53 @@
+.OfferRoomBoxContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .OfferRoomBoxContent {
+    width: 98%;
+    box-shadow: 0 0 10px grey;
+    border-radius: 0.2vw;
+    margin-top: 0.5vw;
+    padding: 1vw;
+    background-color: white;
+    display: flex;
+  }
+}
+.ORBphotoBox {
+  width: 10vw;
+  height: 10vw;
+  background-color: lightgrey;
+  position: relative;
+  z-index: 1;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  & > img {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+}
+.ORBmainInfoBox {
+  width: calc(100% - 15vw);
+  display: flex;
+  justify-content: space-between;
+  .ORBtitleAndAdress {
+    margin-left: 2vw;
+    & > h2 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .ORBstarBox {
+    font-size: 2vw;
+    &img,
+    svg {
+      margin-left: 0.5vw;
+    }
+  }
+}

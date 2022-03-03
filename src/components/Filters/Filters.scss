@@ -43,6 +43,12 @@
   .buttonsBox {
     display: flex;
     align-items: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
     & > svg,
     img {
       margin: 1vw;
@@ -66,6 +72,12 @@
   .buttonsBox {
     display: flex;
     align-items: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
     & > svg,
     img {
       margin: 1vw;
@@ -75,5 +87,13 @@
         color: gold;
       }
     }
+  }
+}
+.disabled {
+  color: lightgrey;
+  cursor: not-allowed;
+  &:hover {
+    color: lightgrey !important;
+    cursor: not-allowed !important;
   }
 }
