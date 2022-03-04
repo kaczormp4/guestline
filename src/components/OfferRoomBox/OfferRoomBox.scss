@@ -118,3 +118,10 @@
     width: calc(100% - 15vw);
   }
 }
+@media only screen and (max-width: 500px) {
+  .OfferRoomBoxContainer {
+    .OfferRoomBoxContent {
+      margin-top: 2vw;
+    }
+  }
+}

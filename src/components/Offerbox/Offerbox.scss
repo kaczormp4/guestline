@@ -186,3 +186,15 @@
     }
   }
 }
+@media only screen and (max-width: 500px) {
+  .closedOfferRoomBoxContainer {
+    .closedOfferRoomBoxContent {
+      padding: 0.5vw;
+      font-size: 2vw;
+      margin-top: $smallMargin;
+    }
+    .closedOfferFloatedInfo {
+      top: -5.5vw;
+    }
+  }
+}
