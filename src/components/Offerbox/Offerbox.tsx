@@ -1,21 +1,13 @@
 import { FC, useEffect, useState } from 'react';
 import { BsFillStarFill, BsStar } from 'react-icons/bs';
-import './Offerbox.scss';
 import { BiDownArrow, BiLeftArrow, BiRightArrow, BiUpArrow } from 'react-icons/bi';
 import { OfferRoomBox } from '../OfferRoomBox/OfferRoomBox';
 import { useSelector } from 'react-redux';
 import { selectFilter } from '../../redux/reducers/filterReducer';
+import { IRoomOccupancy, OfferBoxProps, RoomData } from '../../interfaces/interfaces';
+import './Offerbox.scss';
+import { HandleChangeImageFc } from '../../utils/functions';
 
-interface OfferBoxProps {
-    data: {
-        id: string,
-        name: string,
-        address1: string,
-        address2?: string,
-        starRating: string,
-        images: { url?: string, alt?: string }[]
-    }
-}
 export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
     const [currentImg, setCurrentImg] = useState<number>(0);
     const { adults, children } = useSelector(selectFilter);
@@ -29,24 +21,9 @@ export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
     }
 
     const HandleChangeImage = (diretion: string) => {
-        if (data.images.length > 1) {
-            if (diretion === 'left') {
-                if (currentImg === 0) {
-                    setCurrentImg(data.images.length - 1)
-                }
-                else {
-                    setCurrentImg(currentImg - 1)
-                }
-            } else if (diretion === 'right') {
-                if (currentImg === data.images.length - 1) {
-                    setCurrentImg(0)
-                }
-                else {
-                    setCurrentImg(currentImg + 1)
-                }
-            }
-        }
+        HandleChangeImageFc(diretion, data.images.length, currentImg, setCurrentImg);
     }
+
     const [roomsData, setRoomsData] = useState<any>([]);
 
     useEffect(() => {
@@ -58,22 +35,22 @@ export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
     }, [])
 
     const [isOpen, setOpen] = useState<boolean>(true);
-    const handleCloseOpenView = () => {
+    const HandleCloseOpenView = () => {
         setOpen(!isOpen)
     }
 
     const filteredData = roomsData?.rooms?.filter(
-        (room: { occupancy: { maxAdults: number, maxChildren: number } }) => room.occupancy.maxAdults >= adults && room.occupancy.maxChildren >= children
+        (room: IRoomOccupancy) => room.occupancy.maxAdults >= adults && room.occupancy.maxChildren >= children
     );
 
-    const RoomsBoxes = filteredData?.map((room: any) => <OfferRoomBox room={room} />)
-    console.log('RoomsBoxes', RoomsBoxes)
+    const RoomsBoxes = filteredData?.map((room: RoomData) => <OfferRoomBox room={room} />)
+
     return (
         <>
             <div className="OfferboxContainer">
                 <div className="OfferboxMainInfo">
                     <div className="photoBox">
-                        <img src={data?.images[currentImg].url} alt={data.images[currentImg].alt} />
+                        <img src={data?.images[currentImg]?.url} alt={data.images[currentImg]?.alt} />
                         {
                             data.images.length > 1 && <>
                                 <div className="leftArrow" onClick={() => HandleChangeImage('left')}><BiLeftArrow /></div>
@@ -94,7 +71,7 @@ export const Offerbox: FC<OfferBoxProps> = ({ data }) => {
                 </div>
             </div>
             {
-                <div className="closedOfferRoomBoxContainer" onClick={() => handleCloseOpenView()} >
+                <div className="closedOfferRoomBoxContainer" onClick={() => HandleCloseOpenView()} >
                     {
                         RoomsBoxes?.length !== 0 && !isOpen &&
                         <div className="closedOfferFloatedInfo">

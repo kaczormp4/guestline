@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import './Filters.scss';
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter } from '../../redux/reducers/filterReducer';
 import { decreaseCount, increaseCount, setStars } from '../../redux/actions/filterActions';
 import ReactStars from "react-rating-stars-component";
+import './Filters.scss';
 
 export const Filters: FC = () => {
     const { stars, adults, children } = useSelector(selectFilter);
@@ -21,10 +21,11 @@ export const Filters: FC = () => {
     const decreaseHandleClick = (type: string) => {
         dispatch(decreaseCount(type));
     }
+
     return (
         <div className="FilterContainer">
             <span className="Title">Filters</span>
-            <div className="mobileStars">
+            <div className="MobileStars">
                 <p>Stars:</p>
                 <div className="FilterStars">
                     <ReactStars
@@ -34,11 +35,11 @@ export const Filters: FC = () => {
                         activeColor="#ffd700" />
                 </div>
             </div>
-            <div className="mobileNumberOfPeople">
+            <div className="MobileNumberOfPeople">
                 <p>Number of people:</p>
                 <div className="FilterAdults">
                     <span>Adults:</span>
-                    <div className="buttonsBox">
+                    <div className="ButtonsBox">
                         {
                             adults === 0 ?
                                 <AiOutlineMinusSquare className="disabled" />
@@ -50,7 +51,7 @@ export const Filters: FC = () => {
                 </div>
                 <div className="FilterChildren">
                     <span>Children:</span>
-                    <div className="buttonsBox">
+                    <div className="ButtonsBox">
                         {
                             children === 0 ?
                                 <AiOutlineMinusSquare className="disabled" />

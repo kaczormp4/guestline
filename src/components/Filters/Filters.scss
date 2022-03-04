@@ -21,12 +21,11 @@
 }
 .FilterStars {
   width: 100%;
-  font-size: 2vw;
   &img,
   svg,
   span {
     margin-right: 0.5vw;
-    font-size: 3vw !important;
+    font-size: 2vw !important;
   }
   &img,
   svg:hover {
@@ -36,14 +35,14 @@
 }
 .FilterAdults {
   width: 100%;
-  font-size: 1.5vw;
+  font-size: 1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   & > span {
     font-weight: bold;
   }
-  .buttonsBox {
+  .ButtonsBox {
     display: flex;
     align-items: center;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -55,7 +54,7 @@
     & > svg,
     img {
       margin: 1vw;
-      font-size: 2vw;
+      font-size: 1.5vw;
       &:hover {
         cursor: pointer;
       }
@@ -65,14 +64,14 @@
 
 .FilterChildren {
   width: 100%;
-  font-size: 1.5vw;
+  font-size: 1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   & > span {
     font-weight: bold;
   }
-  .buttonsBox {
+  .ButtonsBox {
     display: flex;
     align-items: center;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -84,7 +83,7 @@
     & > svg,
     img {
       margin: 1vw;
-      font-size: 2vw;
+      font-size: 1.5vw;
       &:hover {
         cursor: pointer;
       }
@@ -97,6 +96,30 @@
   &:hover {
     color: lightgrey !important;
     cursor: not-allowed !important;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .FilterAdults {
+    font-size: 1.5vw;
+    .ButtonsBox {
+      & > svg,
+      img {
+        font-size: 2vw;
+      }
+    }
+  }
+
+  .FilterChildren {
+    font-size: 1.5vw;
+    .ButtonsBox {
+      & > svg,
+      img {
+        font-size: 2vw;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 @media only screen and (max-width: 1000px) {
@@ -112,10 +135,17 @@
       height: max-content;
     }
   }
-  .mobileStars {
+  .MobileStars {
     padding-left: 1vw;
   }
-  .mobileNumberOfPeople {
+  .FilterStars {
+    &img,
+    svg,
+    span {
+      font-size: 3vw !important;
+    }
+  }
+  .MobileNumberOfPeople {
     width: 70%;
     display: flex;
     flex-wrap: wrap;
@@ -130,6 +160,80 @@
     .FilterChildren {
       width: max-content;
       height: max-content;
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  .FilterStars {
+    &img,
+    svg,
+    span {
+      font-size: 4vw !important;
+    }
+  }
+  .FilterAdults {
+    font-size: 3vw;
+    .ButtonsBox {
+      & > svg,
+      img {
+        font-size: 3vw;
+      }
+    }
+  }
+
+  .FilterChildren {
+    font-size: 3vw;
+    .ButtonsBox {
+      & > svg,
+      img {
+        font-size: 3vw;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .FilterContainer {
+    flex-wrap: wrap;
+  }
+  .FilterStars {
+    &img,
+    svg,
+    span {
+      font-size: 6vw !important;
+    }
+  }
+  .MobileStars {
+    padding-left: 1vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    & > p {
+      width: max-content;
+      margin-right: 4vw;
+    }
+  }
+  .MobileNumberOfPeople {
+    & > p {
+      margin-top: 0;
+    }
+  }
+  .FilterAdults {
+    font-size: 4vw;
+    .ButtonsBox {
+      & > svg,
+      img {
+        font-size: 4vw;
+      }
+    }
+  }
+
+  .FilterChildren {
+    font-size: 4vw;
+    .ButtonsBox {
+      & > svg,
+      img {
+        font-size: 4vw;
+      }
     }
   }
 }

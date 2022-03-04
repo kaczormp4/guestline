@@ -98,3 +98,21 @@
     }
   }
 }
+@media only screen and (max-width: 1000px) {
+  .OfferRoomBoxContainer {
+    .OfferRoomBoxContent {
+      margin-top: 1vw;
+    }
+  }
+  .ORBphotoBox {
+    width: 15vw;
+    height: 15vw;
+    & > img {
+      width: 15vw;
+      height: 15vw;
+    }
+  }
+  .ORBmainInfoBox {
+    width: calc(100% - 15vw);
+  }
+}

@@ -1,39 +1,16 @@
 import { FC, useState } from 'react'
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
+import { OfferRoomBoxProps } from '../../interfaces/interfaces';
+import { HandleChangeImageFc } from '../../utils/functions';
 import './OfferRoomBox.scss'
-
-interface OfferRoomBoxProps {
-    room: {
-        name: string,
-        bedConfiguration: string,
-        longDescription: string,
-        images: { url: string, alt?: string }[],
-        occupancy: { maxAdults: number, maxChildren: number }
-    }
-}
 
 export const OfferRoomBox: FC<OfferRoomBoxProps> = ({ room }) => {
     const [currentImg, setCurrentImg] = useState<number>(0);
 
     const HandleChangeImage = (diretion: string) => {
-        if (room.images.length > 1) {
-            if (diretion === 'left') {
-                if (currentImg === 0) {
-                    setCurrentImg(room.images.length - 1)
-                }
-                else {
-                    setCurrentImg(currentImg - 1)
-                }
-            } else if (diretion === 'right') {
-                if (currentImg === room.images.length - 1) {
-                    setCurrentImg(0)
-                }
-                else {
-                    setCurrentImg(currentImg + 1)
-                }
-            }
-        }
+        HandleChangeImageFc(diretion, room.images.length, currentImg, setCurrentImg);
     }
+
     return (
         <div className="OfferRoomBoxContainer">
             <div className="OfferRoomBoxContent">
