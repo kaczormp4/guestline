@@ -1,10 +1,12 @@
+@import "../../variables/style.scss";
+
 .OfferRoomBoxContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   .OfferRoomBoxContent {
     width: 98%;
-    box-shadow: 0 0 10px grey;
+    box-shadow: $mainBoxShadow;
     border-radius: 0.2vw;
     margin-top: 0.5vw;
     padding: 1vw;

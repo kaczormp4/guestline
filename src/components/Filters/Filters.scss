@@ -1,18 +1,20 @@
+@import "../../variables/style.scss";
+
 .FilterContainer {
   height: max-content;
-  box-shadow: 0 0 10px grey;
+  box-shadow: $mainBoxShadow;
   position: sticky;
-  top: 2vw;
-  margin-top: 2vw;
-  border-radius: 0.2vw;
-  padding: 1vw;
-  background-color: white;
+  top: $smallMargin;
+  margin-top: $smallMargin;
+  border-radius: $mainBorderRadius;
+  padding: $smallPadding1;
+  background-color: $contentBgColor;
   & > .Title {
     position: relative;
     top: -2vw;
-    background-color: white;
+    background-color: $contentBgColor;
     box-shadow: 0px -10px 6px 0px grey;
-    padding: 1vw;
+    padding: $smallPadding1;
     font-weight: bold;
   }
   & > p:first-child {
@@ -24,7 +26,7 @@
   &img,
   svg,
   span {
-    margin-right: 0.5vw;
+    margin-right: $vSmallMargin;
     font-size: 2vw !important;
   }
   &img,
